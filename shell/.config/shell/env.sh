@@ -11,6 +11,9 @@ path_prepend() {
 
 [ -d /opt/homebrew/bin ] && path_prepend /opt/homebrew/bin
 [ -d /opt/homebrew/sbin ] && path_prepend /opt/homebrew/sbin
+[ -d /opt/homebrew/opt/ruby/bin ] && path_prepend /opt/homebrew/opt/ruby/bin
+[ -d /opt/homebrew/lib/ruby/gems/4.0.0/bin ] && path_prepend /opt/homebrew/lib/ruby/gems/4.0.0/bin
+[ -d "$HOME/Library/Python/3.14/bin" ] && path_prepend "$HOME/Library/Python/3.14/bin"
 [ -d "$HOME/.elan/bin" ] && path_prepend "$HOME/.elan/bin"
 [ -d "$HOME/.pub-cache/bin" ] && path_prepend "$HOME/.pub-cache/bin"
 [ -d "$HOME/.fvm_flutter/bin" ] && path_prepend "$HOME/.fvm_flutter/bin"
