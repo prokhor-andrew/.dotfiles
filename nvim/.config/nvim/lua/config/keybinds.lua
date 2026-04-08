@@ -49,5 +49,6 @@ vim.keymap.set("n", "<leader>>", ":vertical resize +5<CR>", { desc = "Widen wind
 vim.keymap.set("n", "<leader><", ":vertical resize -5<CR>", { desc = "Narrow window" })
 vim.keymap.set("n", "<CR>", "o<Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<Nop>")
+vim.keymap.set("n", "U", "<C-r>")
 
 --
