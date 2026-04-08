@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(dart format:*)",
+      "WebFetch(domain:thingsboard.io)"
+    ]
+  },
+  "model": "sonnet"
+}

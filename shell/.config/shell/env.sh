@@ -23,6 +23,8 @@ ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 ANDROID_HOME="$ANDROID_SDK_ROOT"
 JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
 CHROME_EXECUTABLE="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+EDITOR="nvim"
+VISUAL="$EDITOR"
 
 [ -d "$ANDROID_SDK_ROOT/platform-tools" ] && path_prepend "$ANDROID_SDK_ROOT/platform-tools"
 [ -d "$JAVA_HOME/bin" ] && path_prepend "$JAVA_HOME/bin"
@@ -33,5 +35,7 @@ export ANDROID_SDK_ROOT
 export ANDROID_HOME
 export JAVA_HOME
 export CHROME_EXECUTABLE
+export EDITOR
+export VISUAL
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
