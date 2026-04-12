@@ -12,6 +12,8 @@ return {
 	    autotage = { enable = true },
 	    ensure_installed = {
 	        "lua",
+		"markdown",
+		"markdown_inline",
 		"tsx",
 		"typescript",
 		"dart",
@@ -20,4 +22,3 @@ return {
 	})
     end
 }
-
