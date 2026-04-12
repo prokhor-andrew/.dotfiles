@@ -25,7 +25,7 @@ end
 vim.keymap.set("n", "<leader>j", "<C-d>zz", { silent = true })
 vim.keymap.set("n", "<leader>k", "<C-u>zz", { silent = true })
 
-vim.keymap.set("n", "vv", "<C-v>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>v", "<C-v>", { noremap = true, silent = true, desc = "Visual block mode" })
 
 vim.keymap.set("n", "<M-j>h", function()
 	smart_navigate("h", "-L")
