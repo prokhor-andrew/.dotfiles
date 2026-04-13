@@ -17,6 +17,7 @@ return {
 		"tsx",
 		"typescript",
 		"dart",
+		"yaml",
 	    },
 	    auto_install = false,
 	})
