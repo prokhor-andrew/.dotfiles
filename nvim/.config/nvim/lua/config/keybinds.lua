@@ -41,6 +41,8 @@ vim.keymap.set("n", "<M-j>l", function()
 end, { desc = "Go right window or tmux pane" })
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Definition" })
+vim.keymap.set("n", "<leader>[", "<C-o>", { desc = "Jump back" })
+vim.keymap.set("n", "<leader>]", "<C-i>", { desc = "Jump forward" })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "References" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
