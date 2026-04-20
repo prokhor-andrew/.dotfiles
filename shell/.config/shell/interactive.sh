@@ -13,8 +13,6 @@ alias duckduckgo='open -a "DuckDuckGo"'
 alias tor-browser='open -a "Tor Browser"'
 alias devcleaner='open -a "DevCleaner"'
 alias xcode='open -a "Xcode"'
-alias webstorm='open -a "WebStorm"'
-alias raycast='open -a "Raycast"'
 alias settings='open -a "System Settings"'
 
 if [ -z "$TMUX" ] && command -v tmux >/dev/null 2>&1; then

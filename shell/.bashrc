@@ -1,3 +1,4 @@
+[ -f "$HOME/.config/shell/env.sh" ] && . "$HOME/.config/shell/env.sh"
 [ -f "$HOME/.config/shell/interactive.sh" ] && . "$HOME/.config/shell/interactive.sh"
 
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
