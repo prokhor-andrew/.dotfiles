@@ -10,9 +10,12 @@
 
 # Shell and tool local overrides
 *.local
+*.local.*
 local.sh
 
 # Generated or sensitive config/state that should not be tracked
 **/hosts.yml
 **/tool_state
 **/sockets/
+codex/.codex/config.toml
+codex/.codex/rules/
