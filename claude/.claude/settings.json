@@ -6,5 +6,9 @@
       "WebFetch(domain:thingsboard.io)"
     ]
   },
-  "model": "sonnet"
+  "model": "sonnet",
+  "editorMode": "vim",
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true
+  }
 }
