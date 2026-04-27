@@ -1,4 +1,5 @@
 local hyper = {"ctrl", "shift", "alt", "cmd"}
+hs.window.animationDuration = 0  -- prevents Sequoia tiling from overriding setFrame
 
 -- ── App Launchers ──────────────────────────────────────────────────────────────
 hs.hotkey.bind(hyper, "t", function() hs.application.launchOrFocus("Microsoft Teams") end)
@@ -32,18 +33,26 @@ end
 hs.hotkey.bind(hyper, "left",  function() cycleWindows("prev") end)
 hs.hotkey.bind(hyper, "right", function() cycleWindows("next") end)
 
--- ── Window Snap (resize to half screen) ───────────────────────────────────────
+-- ── Window Snap (resize to half; if already at any half, restore full) ────────
 local function snap(dir)
     local win = hs.window.focusedWindow()
     if not win then return end
     local s = win:screen():frame()
-    local frames = {
+    local halves = {
         left   = {x = s.x,         y = s.y,         w = s.w / 2, h = s.h},
         right  = {x = s.x + s.w/2, y = s.y,         w = s.w / 2, h = s.h},
         top    = {x = s.x,         y = s.y,         w = s.w,     h = s.h / 2},
         bottom = {x = s.x,         y = s.y + s.h/2, w = s.w,     h = s.h / 2},
     }
-    win:setFrame(frames[dir])
+    local f = win:frame()
+    for _, t in pairs(halves) do
+        if math.abs(f.x - t.x) < 5 and math.abs(f.y - t.y) < 5
+        and math.abs(f.w - t.w) < 5 and math.abs(f.h - t.h) < 5 then
+            win:setFrame({x = s.x, y = s.y, w = s.w, h = s.h})
+            return
+        end
+    end
+    win:setFrame(halves[dir])
 end
 
 hs.hotkey.bind(hyper, "h", function() snap("left") end)
@@ -52,17 +61,21 @@ hs.hotkey.bind(hyper, "k", function() snap("top") end)
 hs.hotkey.bind(hyper, "j", function() snap("bottom") end)
 
 -- ── Window Move (reposition to edge, keep size) ────────────────────────────────
+-- The +1 on the relevant dimension changes both position and size in one atomic
+-- setFrame call, which bypasses macOS 26's tile lock (position-only writes are
+-- silently blocked for tiled windows; combined position+size writes go through).
 local function moveToEdge(dir)
     local win = hs.window.focusedWindow()
     if not win then return end
     local s = win:screen():frame()
     local f = win:frame()
-    if     dir == "left"   then f.x = s.x
-    elseif dir == "right"  then f.x = s.x + s.w - f.w
-    elseif dir == "top"    then f.y = s.y
-    elseif dir == "bottom" then f.y = s.y + s.h - f.h
+    local tx, ty, tw, th = f.x, f.y, f.w, f.h
+    if     dir == "left"   then tx = s.x;             tw = f.w + 1
+    elseif dir == "right"  then tw = f.w + 1;         tx = s.x + s.w - tw
+    elseif dir == "top"    then ty = s.y;              th = f.h + 1
+    elseif dir == "bottom" then th = f.h + 1;         ty = s.y + s.h - th
     end
-    win:setFrame(f)
+    win:setFrame({x = tx, y = ty, w = tw, h = th})
 end
 
 hs.hotkey.bind(hyper, "a", function() moveToEdge("left") end)
