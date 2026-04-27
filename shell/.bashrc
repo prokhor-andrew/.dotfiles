@@ -4,5 +4,8 @@
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
 # Docker CLI completions
-[ -f /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ] && \
-  . /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
+if [ -f /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ]; then
+    . /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
+elif [ -f /usr/share/bash-completion/completions/docker ]; then
+    . /usr/share/bash-completion/completions/docker
+fi

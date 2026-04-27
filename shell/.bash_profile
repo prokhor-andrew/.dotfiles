@@ -3,5 +3,5 @@
 
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
-[ -f /Users/andriiprokhorenko/.dart-cli-completion/bash-config.bash ] && . /Users/andriiprokhorenko/.dart-cli-completion/bash-config.bash || true
+[ -f "$HOME/.dart-cli-completion/bash-config.bash" ] && . "$HOME/.dart-cli-completion/bash-config.bash" || true
 ## [/Completion]
